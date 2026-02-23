@@ -1,0 +1,15 @@
+{
+  "name": "road-to-100kg",
+  "version": "1.0.0",
+  "description": "Workout tracker - Road to 100kg Bench",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.7.0",
+    "express": "^4.21.0",
+    "cors": "^2.8.5"
+  }
+}

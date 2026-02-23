@@ -1,0 +1,16 @@
+services:
+  workout-tracker:
+    build: .
+    container_name: road-to-100kg
+    ports:
+      - "3000:3000"
+    volumes:
+      - workout-data:/app/db
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - DB_PATH=/app/db/workouts.db
+
+volumes:
+  workout-data:
+    driver: local
