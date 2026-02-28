@@ -206,7 +206,7 @@ function SetRow({n,reps,done,onToggle,wt,onWt,ar,onAr}){
       <div style={{flex:1}}><span style={{fontSize:14,color:"rgba(255,255,255,0.6)"}}>Set {n}</span></div>
       <div style={{display:"flex",alignItems:"center",gap:6}} onClick={e=>e.stopPropagation()}>
         <input type="number" value={wt} onChange={e=>onWt(e.target.value)} placeholder="kg" style={{width:52,padding:"5px 4px",borderRadius:6,border:"1px solid rgba(255,255,255,0.15)",background:"rgba(255,255,255,0.06)",color:"#fff",fontSize:14,textAlign:"center",fontFamily:"monospace",outline:"none"}}/>
-        <span style={{color:"rgba(255,255,255,0.3)",fontSize:12}}>\u00D7</span>
+        <span style={{color:"rgba(255,255,255,0.3)",fontSize:12}}>×</span>
         <input type="text" value={ar} onChange={e=>onAr(e.target.value)} placeholder={reps} style={{width:44,padding:"5px 4px",borderRadius:6,border:"1px solid rgba(255,255,255,0.15)",background:"rgba(255,255,255,0.06)",color:"#fff",fontSize:14,textAlign:"center",fontFamily:"monospace",outline:"none"}}/>
       </div>
     </div>
@@ -225,18 +225,18 @@ function ExCard({ex,color,onTimer,cs,sd,onToggle,onSD,onGuide}){
             <span style={{fontSize:15,fontWeight:ex.primary?700:500,color:"#fff",textDecoration:allDone?"line-through":"none",textDecorationColor:"rgba(255,255,255,0.3)"}}>{ex.name}</span>
             <Badge id={ex.id}/>
           </div>
-          <div style={{fontSize:12,color:"rgba(255,255,255,0.4)",marginTop:2}}>{ex.sets}\u00D7{ex.reps} \u00B7 {ex.rest>0?`${ex.rest}s`:"No rest"}{g?` \u00B7 ${g.milestone}`:""}</div>
+          <div style={{fontSize:12,color:"rgba(255,255,255,0.4)",marginTop:2}}>{ex.sets}×{ex.reps} · {ex.rest>0?`${ex.rest}s`:"No rest"}{g?` · ${g.milestone}`:""}</div>
         </div>
         <div style={{display:"flex",alignItems:"center",gap:8,flexShrink:0}}>
           <span style={{fontSize:12,color:"rgba(255,255,255,0.3)",fontFamily:"monospace"}}>{cs.length}/{ex.sets}</span>
-          <span style={{fontSize:12,color:"rgba(255,255,255,0.3)",transform:exp?"rotate(180deg)":"none",transition:"transform 0.2s"}}>\u25BE</span>
+          <span style={{fontSize:12,color:"rgba(255,255,255,0.3)",transform:exp?"rotate(180deg)":"none",transition:"transform 0.2s"}}>▾</span>
         </div>
       </div>
       {exp&&(
         <div style={{padding:"0 16px 14px"}}>
           {g&&<div onClick={e=>{e.stopPropagation();onGuide?.(ex.id);}} style={{padding:"8px 10px",borderRadius:8,marginBottom:10,cursor:"pointer",background:MC[g.method].bg,border:`1px solid ${MC[g.method].color}22`}}>
             <div style={{fontSize:11,color:MC[g.method].color,fontWeight:600,marginBottom:2}}>{g.method==="double"?"\u2191 Hit top of rep range \u2192 add weight \u2192 drop":g.method==="bw"?`\u2191 Build to threshold \u2192 add ${g.increment}`:g.method==="quality"?"\u25CE Focus on control, not weight":g.method==="linear"?`\u2191 Add ${g.increment} every 2-3 weeks`:"Follows programme table"}</div>
-            <div style={{fontSize:11,color:"rgba(255,255,255,0.45)"}}>Tap for full guide <span style={{color:MC[g.method].color}}>\u2192</span></div>
+            <div style={{fontSize:11,color:"rgba(255,255,255,0.45)"}}>Tap for full guide <span style={{color:MC[g.method].color}}>→</span></div>
           </div>}
           {Array.from({length:ex.sets},(_,i)=><SetRow key={i} n={i+1} reps={ex.reps} done={cs.includes(i)} wt={sd[i]?.weight||""} ar={sd[i]?.reps||""} onWt={v=>onSD(i,"weight",v)} onAr={v=>onSD(i,"reps",v)} onToggle={()=>{onToggle(i);if(!cs.includes(i)&&ex.rest>0&&i<ex.sets-1)onTimer(ex.rest);}}/>)}
         </div>
