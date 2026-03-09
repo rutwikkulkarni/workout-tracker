@@ -1,0 +1,30 @@
+export const AG = {
+  a5:{method:"double",repRange:"8-10",increment:"2.5-5kg",milestone:"BW+20kg x 3x10",tip:"Start bodyweight. Add weight via belt once 3x10 is easy. Lean forward for chest emphasis."},
+  a6:{method:"linear",repRange:"8",increment:"2.5kg",milestone:"70kg x 4x8",tip:"Add 2.5kg every 2-3 weeks. Never sacrifice form."},
+  a7:{method:"double",repRange:"10-12",increment:"2kg/DB",milestone:"22kg DBs x 3x12",tip:"DB jumps feel big. Stay until all sets hit 12 cleanly."},
+  a8:{method:"bw",repRange:"max",increment:"2.5kg",milestone:"BW+10kg x 3x8",tip:"Bodyweight until 3x12 clean. Then add 2.5kg via belt."},
+  a9:{method:"quality",repRange:"12 each",increment:"1-2kg",milestone:"Clean form",tip:"Don't chase weight. Focus on squeeze and control."},
+  b4:{method:"linear",repRange:"10",increment:"2.5-5kg",milestone:"80kg x 3x10",tip:"Add 2.5kg every 2 weeks. Feel the hamstrings."},
+  b5:{method:"double",repRange:"8/leg",increment:"2kg/DB",milestone:"20kg DBs x 3x8",tip:"Balance matters more than weight."},
+  b6:{method:"double",repRange:"10/leg",increment:"2.5kg",milestone:"16kg DBs x 3x10",tip:"Add weight when all sets done with control."},
+  b7:{method:"double",repRange:"15",increment:"4kg KB",milestone:"24kg x 3x15",tip:"Master the hip snap before progressing."},
+  b8:{method:"bw",repRange:"12",increment:"Slow negs",milestone:"3x15 controlled",tip:"Progress by slowing the movement down."},
+  c3:{method:"main",repRange:"6-8",increment:"Tracks bench",milestone:"80-85% bench",tip:"Progresses automatically as bench goes up."},
+  c4:{method:"double",repRange:"10-12",increment:"2kg/DB",milestone:"24kg DBs x 3x12",tip:"Start conservative. Upper chest responds well to control."},
+  c5:{method:"linear",repRange:"8-10",increment:"2.5kg",milestone:"65kg x 4x10",tip:"Add 2.5kg every 2-3 weeks."},
+  c6:{method:"quality",repRange:"15",increment:"1kg",milestone:"8kg x 3x15",tip:"Never ego-lift lateral raises."},
+  c7:{method:"bw",repRange:"max",increment:"Wt at 20+",milestone:"BW+10kg x 3x15",tip:"Only add weight if hitting 20+ easily."},
+  c8:{method:"quality",repRange:"15-20",increment:"Heavier band",milestone:"Strong band x 3x20",tip:"Progress by using a thicker band."},
+  c9:{method:"quality",repRange:"12 each",increment:"1-2kg",milestone:"Clean supersets",tip:"Slow eccentrics matter more than weight."},
+  d1:{method:"linear",repRange:"6",increment:"2.5kg",milestone:"~70% back squat",tip:"Tracks at roughly 70% of your back squat."},
+  d2:{method:"double",repRange:"8/leg",increment:"2kg/DB",milestone:"16kg DBs x 3x8",tip:"Balance is the priority."},
+  d3:{method:"quality",repRange:"40m",increment:"Longer carries",milestone:"20kg x 60m",tip:"Increase distance before adding weight."},
+};
+
+export const MC = {
+  main:{label:"PROGRAMME",color:"#F59E0B",bg:"rgba(245,158,11,0.12)"},
+  double:{label:"DOUBLE PROG",color:"#60A5FA",bg:"rgba(96,165,250,0.12)"},
+  bw:{label:"BW PROG",color:"#34D399",bg:"rgba(52,211,153,0.12)"},
+  quality:{label:"QUALITY",color:"#C084FC",bg:"rgba(192,132,252,0.12)"},
+  linear:{label:"LINEAR",color:"#FB923C",bg:"rgba(251,146,60,0.12)"},
+};
