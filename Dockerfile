@@ -1,15 +1,22 @@
-FROM node:22-alpine
-
+# Stage 1: Build frontend
+FROM node:22-alpine AS builder
 WORKDIR /app
-
-# Install build tools for better-sqlite3 native compilation
-RUN apk add --no-cache python3 make g++
-
-COPY package.json ./
-RUN npm install --production
-
+RUN apk add --no-cache python3 make g++ && npm install -g pnpm
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
+COPY vite.config.mjs index.html ./
 COPY src/ ./src/
-COPY public/ ./public/
+COPY static/ ./static/
+RUN pnpm build
+
+# Stage 2: Production
+FROM node:22-alpine
+WORKDIR /app
+RUN apk add --no-cache python3 make g++ && npm install -g pnpm
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --prod --frozen-lockfile
+COPY src/ ./src/
+COPY --from=builder /app/public/ ./public/
 
 # Create db directory with correct permissions
 RUN mkdir -p /app/db

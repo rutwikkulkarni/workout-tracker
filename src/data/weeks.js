@@ -1,0 +1,15 @@
+export const WEEKS = [
+  {week:"Wk 1-2",bench:"72.5kg",squat:"70kg",phase:"Volume"},
+  {week:"Wk 3-4",bench:"75kg",squat:"75kg",phase:"Volume"},
+  {week:"Wk 5-6",bench:"77.5kg",squat:"80kg",phase:"Volume"},
+  {week:"Wk 7-8",bench:"80kg",squat:"82.5kg",phase:"Strength"},
+  {week:"Wk 9-10",bench:"82.5kg",squat:"85kg",phase:"Strength"},
+  {week:"Wk 11-12",bench:"85kg",squat:"90kg",phase:"Strength"},
+  {week:"Wk 13",bench:"Deload",squat:"Deload",phase:"Recovery"},
+  {week:"Wk 14-16",bench:"87.5kg",squat:"92.5kg",phase:"Intensity"},
+  {week:"Wk 17-18",bench:"90kg",squat:"95kg",phase:"Intensity"},
+  {week:"Wk 19-20",bench:"92.5kg",squat:"97.5kg",phase:"Peaking"},
+  {week:"Wk 21-22",bench:"95kg",squat:"100kg",phase:"Peaking"},
+  {week:"Wk 23-24",bench:"97.5kg",squat:"102.5kg",phase:"Peaking"},
+  {week:"Wk 25",bench:"100kg!",squat:"Test",phase:"TEST"},
+];
