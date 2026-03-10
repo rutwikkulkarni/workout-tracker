@@ -4,7 +4,7 @@ import { API } from '../../api/index.js';
 const DAY_COLORS = { dayA: '#2563EB', dayB: '#16A34A', dayC: '#7C3AED', dayD: '#DC2626' };
 
 function mapRow(w) {
-  return { id: w.id, day: w.day_name, dayKey: w.day_key, date: w.started_at?.split("T")[0] || w.started_at, completed: w.completed_sets, total: w.total_sets, finished: !!w.finished_at };
+  return { id: w.id, day: w.day_name, dayKey: w.day_key, date: w.started_at?.split(/[T ]/)[0], completed: w.completed_sets, total: w.total_sets, finished: !!w.finished_at };
 }
 
 export default function HistoryScreen({ setScr }) {
@@ -23,7 +23,7 @@ export default function HistoryScreen({ setScr }) {
     (async () => {
       try {
         const rows = await API.get(`/workouts?limit=${LIMIT}&offset=0`);
-        setItems(rows.map(mapRow));
+        setItems(rows.map(mapRow).filter(w => w.finished));
         setHasMore(rows.length === LIMIT);
         setOffset(LIMIT);
       } catch (e) { console.error(e); }
@@ -35,7 +35,7 @@ export default function HistoryScreen({ setScr }) {
     setLoadingMore(true);
     try {
       const rows = await API.get(`/workouts?limit=${LIMIT}&offset=${offset}`);
-      setItems(prev => [...prev, ...rows.map(mapRow)]);
+      setItems(prev => [...prev, ...rows.map(mapRow).filter(w => w.finished)]);
       setHasMore(rows.length === LIMIT);
       setOffset(prev => prev + LIMIT);
     } catch (e) { console.error(e); }
@@ -96,11 +96,7 @@ export default function HistoryScreen({ setScr }) {
                       <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', marginTop: 2 }}>{formatDate(item.date)}</div>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                      {item.finished ? (
-                        <span style={{ fontSize: 12, fontFamily: 'monospace', color: 'rgba(255,255,255,0.5)' }}>{item.completed}/{item.total}</span>
-                      ) : (
-                        <span style={{ fontSize: 11, color: '#F59E0B', background: 'rgba(245,158,11,0.12)', padding: '2px 8px', borderRadius: 10 }}>incomplete</span>
-                      )}
+                      <span style={{ fontSize: 12, fontFamily: 'monospace', color: 'rgba(255,255,255,0.5)' }}>{item.completed}/{item.total}</span>
                       <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: 14, transform: isOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s', display: 'inline-block' }}>▾</span>
                     </div>
                   </button>
