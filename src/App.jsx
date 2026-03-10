@@ -4,6 +4,7 @@ import HomeScreen from './components/screens/HomeScreen.jsx'
 import WorkoutScreen from './components/screens/WorkoutScreen.jsx'
 import ProgressScreen from './components/screens/ProgressScreen.jsx'
 import GuideScreen from './components/screens/GuideScreen.jsx'
+import HistoryScreen from './components/screens/HistoryScreen.jsx'
 
 export default function App() {
   const [scr, setScr] = useState('home');
@@ -16,6 +17,7 @@ export default function App() {
   if (scr === 'home') return <HomeScreen cw={workout.cw} setCw={workout.setCw} hist={workout.hist} startW={workout.startW} setScr={setScr} />;
   if (scr === 'guide') return <GuideScreen setScr={setScr} />;
   if (scr === 'progress') return <ProgressScreen cw={workout.cw} setScr={setScr} />;
+  if (scr === 'history') return <HistoryScreen setScr={setScr} />;
 
   return (
     <WorkoutScreen

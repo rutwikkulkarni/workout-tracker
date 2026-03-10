@@ -68,6 +68,7 @@ export default function HomeScreen({cw, setCw, hist, startW, setScr}) {
       </div>
 
       <div style={{padding:"24px 20px",display:"flex",gap:10,justifyContent:"center",flexWrap:"wrap"}}>
+        <button onClick={()=>setScr("history")} style={{background:"none",border:"1px solid rgba(255,255,255,0.1)",color:"rgba(255,255,255,0.5)",padding:"10px 20px",borderRadius:20,cursor:"pointer",fontSize:13,fontWeight:500}}>Workout History</button>
         <button onClick={()=>setScr("progress")} style={{background:"none",border:"1px solid rgba(255,255,255,0.1)",color:"rgba(255,255,255,0.5)",padding:"10px 20px",borderRadius:20,cursor:"pointer",fontSize:13,fontWeight:500}}>Progression Table</button>
         <button onClick={()=>setScr("guide")} style={{background:"none",border:"1px solid rgba(255,255,255,0.1)",color:"rgba(255,255,255,0.5)",padding:"10px 20px",borderRadius:20,cursor:"pointer",fontSize:13,fontWeight:500}}>Accessory Guide</button>
         <a href="/api/export" style={{background:"none",border:"1px solid rgba(255,255,255,0.1)",color:"rgba(255,255,255,0.5)",padding:"10px 20px",borderRadius:20,cursor:"pointer",fontSize:13,fontWeight:500,textDecoration:"none"}}>Export Data</a>
